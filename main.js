@@ -19,7 +19,7 @@ function taxCalculation() {
     let minMaximum = Math.min( taxableIncome * .25, 1500000);
     let minApplicable = Math.min( invest, minMaximum);
 
-    document.getElementById("tax-maximum-allowable-investment").value = minMaximum;
+    document.getElementById("tax-maximum-allowable-investment").value =  minMaximum;
     document.getElementById("tax-applicable-allowable-investment").value = minApplicable;
 
 
@@ -81,7 +81,7 @@ function taxCalculation() {
     
     document.querySelector('.tax-summary').innerHTML = `
         <p class="">
-            Based on your annual income, if you Invest the Maximum Allowable Investment of <strong>BDT ${minMaximum}</strong> for tax rebate in Ekush Managed Fund, you can save <strong>BDT ${saveTaxOne}</strong> in taxes, implicitly earn <strong>${taxInvestOne}%</strong> on your investment merely through tax savings. Which is <strong>${taxIncomeOne*1000}%</strong> of your total income.
+            Based on your annual income, if you Invest the Maximum Allowable Investment of <strong>BDT ${new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 15 }).format(minMaximum)}</strong> for tax rebate in Ekush Managed Fund, you can save <strong>BDT ${new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 15 }).format(saveTaxOne)}</strong> in taxes, implicitly earn <strong>${taxInvestOne}%</strong> on your investment merely through tax savings. Which is <strong>${taxIncomeOne*1000}%</strong> of your total income.
         </p>
     `
 
