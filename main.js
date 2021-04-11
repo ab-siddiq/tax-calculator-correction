@@ -78,7 +78,7 @@ function taxCalculation() {
     //output-save-tax-amount-
     //output-tax-invest-
     //output-tax-total-income-
-    
+    document.getElementById("tax-summary").className += " tax-summary";
     document.querySelector('.tax-summary').innerHTML = `
         <p class="">
             Based on your annual income, if you Invest the Maximum Allowable Investment of <strong>BDT ${new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 15 }).format(minMaximum)}</strong> for tax rebate in Ekush Managed Fund, you can save <strong>BDT ${new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 15 }).format(saveTaxOne)}</strong> in taxes, implicitly earn <strong>${taxInvestOne}%</strong> on your investment merely through tax savings. Which is <strong>${taxIncomeOne*1000}%</strong> of your total income.
