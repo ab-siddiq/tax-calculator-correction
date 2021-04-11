@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section id="tax-calculator">
+        <div class="container">
+            <div class="grid">
+                <div class="grid-child">
+                    <div class="text-center pb-5">
+                        <h2 class="text-capitalize">tax calculator</h2>
+                        <div class=""><hr class="line m-auto"></div>
+                    </div>
+                    <!-- tax input -->
+                    <div class="tax-input">
+                        <form action="" method="post" class="" id="tax-form" onsubmit="taxCalculation()">
+                            <div class="mb-3 row">
+                                <label for="staticEmail" class="col-6 col-form-label">Your Good Name Please</label>
+                                <div class="col-6">
+                                    <input type="text" name="tax-input-name" class="form-control" id="tax-name-input" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="" class="col-6 col-form-label">Your actual investment for tax rebate</label>
+                                <div class="col-6">
+                                    <input type="number" name="tax-input-actual-invest" class="form-control" id="tax-actual-invest">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="" class="col-6 col-form-label">Your total income</label>
+                                <div class="col-6">
+                                    <input type="number" name="tax-input" class="form-control" id="tax-total-income">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="" class="col-6 col-form-label">Your Annual Taxable Income (BDT)</label>
+                                <div class="col-6">
+                                    <input type="number" name="tax-input" class="form-control" id="tax-annual-taxable-income">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="" class="col-6 col-form-label">Your Maximum Allowable Investment for Tax Rebate
+                                    (BDT)</label>
+                                <div class="col-6">
+                                    <input type="number" readonly class="form-control readonly" id="tax-maximum-allowable-investment">
+                                </div>
+                            </div>
+                            <div class="  ">
+                                <div class="d-flex justify-content-end">
+                                    <button onclick="" type="reset" id="reset" class="btn calculate-button mx-2">reset</button>
+                                    <button onclick="" type="submit" id="calculate" class="btn calculate-button mx-2">calculate</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- tax output -->
+                    <div id="tax-output" class="tax-output">
+                        <form action="" id="tax-output-form">
+                            <div class="mb-3 row">
+                                <label for="staticEmail" class="col-6 col-form-label"></label>
+                                <label for="staticEmail" class="col-3 col-form-label "><strong> Ekush First Unit Fund </strong></label>
+                                <label for="staticEmail" class="col-3 col-form-label "><strong> DPS </strong></label>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="staticEmail" class="col-6 col-form-label">Actual investment</label>
+                                <div class="col-3">
+                                    <input type="number" name="tax-input" readonly class="form-control" id="output-actual-invest-unit-fund" placeholder="">
+                                </div>
+                                <div class="col-3">
+                                    <input type="number" name="tax-input" readonly class="form-control" id="output-actual-invest-dps" placeholder="">
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="mb-3 row">
+                                <label for="" class="col-6 col-form-label">Maximum Eligible Investment for Tax Rebate (BDT)</label>
+                                <div class="col-3">
+                                    <input type="text" name="tax-input" readonly class="form-control" id="output-maximum-investment-unit-fund" placeholder="">
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" name="tax-input" readonly class="form-control" id="output-maximum-investment-dps" placeholder="" value="60000">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="" class="col-6 col-form-label">You can save Tax Amounting to (BDT)</label>
+                                <div class="col-3">
+                                    <input type="text" readonly class="form-control" id="output-save-tax-unit-fund" placeholder="">
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" readonly class="form-control" id="output-save-tax-dps" placeholder="">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="" class="col-6 col-form-label">Return through Tax Savings</label>
+                                <div class="col-3">
+                                    <input type="text" readonly class="form-control" id="output-return-tax-unit-fund" placeholder="">
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" readonly class="form-control" id="output-return-tax-dps" placeholder="">
+                                </div>
+                            </div>
+                        </form>
+                       
+                    </div>
+                    <div class="text-center tax-summary">
+                        <p class="">
+                            Based on your Taxable Income and total income, If you Invest the Maximum Allowable Investment of BDT <span id="max-allowable-investment">300000</span> for tax rebate in Ekush First Unit Fund, <span id="ekus-unit-fund">45000</span> in taxes, implicitly earn <span id="implicitly-earn">5%</span> on your investment merely through tax savings.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="main.js"></script>
+</body>
+
+</html>
