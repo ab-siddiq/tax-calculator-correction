@@ -16,7 +16,7 @@ function taxCalculation() {
     // console.log(allowableInvestment);
 
 
-    let minMaximum = Math.min( taxableIncome * .25, 1500000);
+    let minMaximum = Math.min( taxableIncome * .25, 15000000);
     let minApplicable = Math.min( invest, minMaximum);
 
     document.getElementById("tax-maximum-allowable-investment").value =  minMaximum;
@@ -64,16 +64,18 @@ function taxCalculation() {
     let taxInvestOne = saveTaxOne / investAmountOne;
     let taxInvestTwo = saveTaxTwo / investAmountTwo;
     let taxInvestThree = saveTaxThree / investAmountThree;
+   
     document.getElementById("output-tax-invest-1").value = taxInvestOne * 100 + "%";         
     document.getElementById("output-tax-invest-2").value = taxInvestTwo * 100 + "%";         
     document.getElementById("output-tax-invest-3").value = taxInvestThree * 100 + "%";
     
-    let taxIncomeOne = saveTaxOne / income;
-    let taxIncomeTwo = saveTaxTwo / income;
-    let taxIncomeThree = saveTaxThree / income;
-    document.getElementById("output-tax-total-income-1").value = taxIncomeOne * 1000 + "%";         
-    document.getElementById("output-tax-total-income-2").value = taxIncomeTwo * 100 + "%";         
-    document.getElementById("output-tax-total-income-3").value = taxIncomeThree * 100 + "%";         
+    let taxIncomeOne = (saveTaxOne / income)*100;
+    let taxIncomeTwo = (saveTaxTwo / income)*100;
+    let taxIncomeThree = (saveTaxThree / income)*100;
+    console.log(saveTaxOne,income,taxIncomeOne);
+    document.getElementById("output-tax-total-income-1").value = taxIncomeOne.toFixed(2) + "%";         
+    document.getElementById("output-tax-total-income-2").value = taxIncomeTwo.toFixed(2) + "%";         
+    document.getElementById("output-tax-total-income-3").value = taxIncomeThree.toFixed(2) + "%";         
     //output-invest-amount-
     //output-save-tax-amount-
     //output-tax-invest-
@@ -81,7 +83,7 @@ function taxCalculation() {
     document.getElementById("tax-summary").className += " tax-summary";
     document.querySelector('.tax-summary').innerHTML = `
         <p class="">
-            Based on your annual income, if you Invest the Maximum Allowable Investment of <strong>BDT ${new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 15 }).format(minMaximum)}</strong> for tax rebate in Ekush Managed Fund, you can save <strong>BDT ${new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 15 }).format(saveTaxOne)}</strong> in taxes, implicitly earn <strong>${taxInvestOne}%</strong> on your investment merely through tax savings. Which is <strong>${taxIncomeOne*1000}%</strong> of your total income.
+            Based on your annual income, if you Invest the Maximum Allowable Investment of <strong>BDT ${new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 15 }).format(minMaximum)}</strong> for tax rebate in Ekush Managed Fund, you can save <strong>BDT ${new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 15 }).format(saveTaxOne)}</strong> in taxes, implicitly earn <strong>${taxInvestOne*100}%</strong> on your investment merely through tax savings. Which is <strong>${taxIncomeOne.toFixed(2)}%</strong> of your total income.
         </p>
     `
 
