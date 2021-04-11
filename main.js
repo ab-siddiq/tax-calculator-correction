@@ -30,35 +30,35 @@ function taxCalculation() {
     let  = 0;
     let saveTaxTwo = 0;
     let saveTaxThree = 0;
-    document.getElementById("output-invest-amount-1").value = investAmountOne;
-    document.getElementById("output-invest-amount-2").value = investAmountTwo;
+    document.getElementById("output-invest-amount-1").value = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 15 }).format(investAmountOne) ;
+    document.getElementById("output-invest-amount-2").value = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 15 }).format(investAmountTwo) ;
     //output save tax amount
     
   
     if (income > 1500000) {
         saveTaxOne = minMaximum * 0.1;
-        document.getElementById("output-save-tax-amount-1").value = saveTaxOne;
+        document.getElementById("output-save-tax-amount-1").value =new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 15 }).format(saveTaxOne) ;
     } else {
         saveTaxOne =  minMaximum * 0.15;
-        document.getElementById("output-save-tax-amount-1").value = saveTaxOne;
+        document.getElementById("output-save-tax-amount-1").value =new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 15 }).format(saveTaxOne);
     }
 // 
     if (income > 1500000) {
         saveTaxTwo = minApplicable * 0.1;
-        document.getElementById("output-save-tax-amount-2").value = saveTaxTwo;
+        document.getElementById("output-save-tax-amount-2").value =new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 15 }).format(saveTaxTwo) ;
        
     } else {
         saveTaxTwo = minApplicable * 0.15;
-        document.getElementById("output-save-tax-amount-2").value = saveTaxTwo;
+        document.getElementById("output-save-tax-amount-2").value =new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 15 }).format(saveTaxTwo) ;
     }
 // 
     if (income > 1500000) {
         saveTaxThree = investAmountThree * 0.1;
-        document.getElementById("output-save-tax-amount-3").value = saveTaxThree;
+        document.getElementById("output-save-tax-amount-3").value =new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 15 }).format(saveTaxThree) ;
        
     } else {
         saveTaxThree = investAmountThree * 0.15;
-        document.getElementById("output-save-tax-amount-3").value = saveTaxThree;
+        document.getElementById("output-save-tax-amount-3").value =new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 15 }).format(saveTaxThree) ;
     }
 
     let taxInvestOne = saveTaxOne / investAmountOne;
