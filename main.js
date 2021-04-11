@@ -7,62 +7,83 @@ taxForm.addEventListener("submit", (e)=>{
     e.preventDefault();
 })
 function taxCalculation() {
-    // const nameInput = getInputNumber("tax-name-input");
-    // console.log(nameInput);
-    console.log("clicked");
+  
     let invest = getInputNumber("tax-actual-invest");
     let income = getInputNumber("tax-total-income");
     let taxableIncome = getInputNumber("tax-annual-taxable-income");
     let allowableInvestment = getInputNumber("tax-maximum-allowable-investment");
+    let investAmountThree = getInputNumber("output-invest-amount-3");
     // console.log(allowableInvestment);
 
-    let minValue = Math.min(invest, taxableIncome * .25, 1500000);
 
-    document.getElementById("tax-maximum-allowable-investment").value = minValue;
-    document.getElementById("output-actual-invest-unit-fund").value = invest;
+    let minMaximum = Math.min( taxableIncome * .25, 1500000);
+    let minApplicable = Math.min( invest, minMaximum);
 
-    let outputSaveTaxUnitFund = getInputNumber("output-save-tax-unit-fund");
+    document.getElementById("tax-maximum-allowable-investment").value = minMaximum;
+    document.getElementById("tax-applicable-allowable-investment").value = minApplicable;
+
+
+  //output invest
+    let investAmountOne = minMaximum;
+    let investAmountTwo = minApplicable;
     
-    let outputSaveTaxDPS = getInputNumber("output-save-tax-dps");
-
-    let outputActualInvestUnitFund = getInputNumber("output-actual-invest-unit-fund");
-    let outputActualInvestDPS = getInputNumber("output-actual-invest-dps");
-
-    document.getElementById("output-actual-invest-dps").value = outputActualInvestUnitFund;
-    document.getElementById("output-maximum-investment-unit-fund").value = minValue;
-
-    let saveTaxUnit = 0;
-    let saveTaxDPS = 0;
-    let outputMaximumInvestUnitFund = getInputNumber("output-maximum-investment-unit-fund");
-    let outputMaximumInvestDPS = getInputNumber("output-maximum-investment-dps");
+    let  = 0;
+    let saveTaxTwo = 0;
+    let saveTaxThree = 0;
+    document.getElementById("output-invest-amount-1").value = investAmountOne;
+    document.getElementById("output-invest-amount-2").value = investAmountTwo;
+    //output save tax amount
+    
   
     if (income > 1500000) {
-        saveTaxUnit = outputMaximumInvestUnitFund * .1;
-        saveTaxDPS = outputMaximumInvestDPS * .1;
-        console.log("if", saveTax);
-        document.getElementById("output-save-tax-unit-fund").value = saveTax;
-        document.getElementById("output-save-tax-dps").value = saveTaxDPS;
+        saveTaxOne = minMaximum * 0.1;
+        document.getElementById("output-save-tax-amount-1").value = saveTaxOne;
     } else {
-        saveTaxUnit = outputMaximumInvestUnitFund * .15;
-        saveTaxDPS = outputMaximumInvestDPS * .15;
-        console.log("else", saveTaxUnit);
-        document.getElementById("output-save-tax-unit-fund").value = saveTaxUnit;
-        document.getElementById("output-save-tax-dps").value = saveTaxDPS;
+        saveTaxOne =  minMaximum * 0.15;
+        document.getElementById("output-save-tax-amount-1").value = saveTaxOne;
+    }
+// 
+    if (income > 1500000) {
+        saveTaxTwo = minApplicable * 0.1;
+        document.getElementById("output-save-tax-amount-2").value = saveTaxTwo;
+       
+    } else {
+        saveTaxTwo = minApplicable * 0.15;
+        document.getElementById("output-save-tax-amount-2").value = saveTaxTwo;
+    }
+// 
+    if (income > 1500000) {
+        saveTaxThree = investAmountThree * 0.1;
+        document.getElementById("output-save-tax-amount-3").value = saveTaxThree;
+       
+    } else {
+        saveTaxThree = investAmountThree * 0.15;
+        document.getElementById("output-save-tax-amount-3").value = saveTaxThree;
     }
 
-   
-    let calculateTaxUnit = Math.ceil((saveTaxUnit / outputActualInvestUnitFund)*100);
-    let calculateTaxDPS = Math.ceil((saveTaxDPS / outputActualInvestUnitFund)*100);
-   
-    console.log(calculateTaxUnit, calculateTaxDPS);
-    document.getElementById("output-return-tax-unit-fund").value =calculateTaxUnit+"%";
-    document.getElementById("output-return-tax-dps").value =calculateTaxDPS+"%";
-
-    document.getElementById("max-allowable-investment").innerHTML = outputMaximumInvestUnitFund; 
-    document.getElementById("ekus-unit-fund").innerHTML = saveTaxUnit; 
-    document.getElementById("implicitly-earn").innerHTML = calculateTaxUnit+"%"; 
+    let taxInvestOne = saveTaxOne / investAmountOne;
+    let taxInvestTwo = saveTaxTwo / investAmountTwo;
+    let taxInvestThree = saveTaxThree / investAmountThree;
+    document.getElementById("output-tax-invest-1").value = taxInvestOne * 100 + "%";         
+    document.getElementById("output-tax-invest-2").value = taxInvestTwo * 100 + "%";         
+    document.getElementById("output-tax-invest-3").value = taxInvestThree * 100 + "%";
     
-
+    let taxIncomeOne = saveTaxOne / income;
+    let taxIncomeTwo = saveTaxTwo / income;
+    let taxIncomeThree = saveTaxThree / income;
+    document.getElementById("output-tax-total-income-1").value = taxIncomeOne * 1000 + "%";         
+    document.getElementById("output-tax-total-income-2").value = taxIncomeTwo * 100 + "%";         
+    document.getElementById("output-tax-total-income-3").value = taxIncomeThree * 100 + "%";         
+    //output-invest-amount-
+    //output-save-tax-amount-
+    //output-tax-invest-
+    //output-tax-total-income-
+    
+    document.querySelector('.tax-summary').innerHTML = `
+        <p class="">
+            Based on your annual income, if you Invest the Maximum Allowable Investment of <strong>BDT ${minMaximum}</strong> for tax rebate in Ekush Managed Fund, you can save <strong>BDT ${saveTaxOne}</strong> in taxes, implicitly earn <strong>${taxInvestOne}%</strong> on your investment merely through tax savings. Which is <strong>${taxIncomeOne*1000}%</strong> of your total income.
+        </p>
+    `
 
 }
 

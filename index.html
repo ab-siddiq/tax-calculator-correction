@@ -17,41 +17,54 @@
             <div class="grid">
                 <div class="grid-child">
                     <div class="text-center pb-5">
-                        <h2 class="text-capitalize">tax calculator</h2>
+                        <h2 class="text-capitalize">tax saving calculator</h2>
                         <div class=""><hr class="line m-auto"></div>
                     </div>
                     <!-- tax input -->
                     <div class="tax-input">
                         <form action="" method="post" class="" id="tax-form" onsubmit="taxCalculation()">
+                            <!-- name -->
                             <div class="mb-3 row">
                                 <label for="staticEmail" class="col-6 col-form-label">Your Good Name Please</label>
                                 <div class="col-6">
-                                    <input type="text" name="tax-input-name" class="form-control" id="tax-name-input" placeholder="Name">
+                                    <input type="text" name="tax-input-name" class="form-control" id="tax-name-input" placeholder="Name" value="siddiq">
                                 </div>
                             </div>
-                            <div class="mb-3 row">
-                                <label for="" class="col-6 col-form-label">Your actual investment for tax rebate</label>
-                                <div class="col-6">
-                                    <input type="number" name="tax-input-actual-invest" class="form-control" id="tax-actual-invest">
-                                </div>
-                            </div>
+                            <!-- income -->
                             <div class="mb-3 row">
                                 <label for="" class="col-6 col-form-label">Your total income</label>
                                 <div class="col-6">
-                                    <input type="number" name="tax-input" class="form-control" id="tax-total-income">
+                                    <input type="number" name="tax-input" class="form-control" id="tax-total-income" value="50000000">
                                 </div>
                             </div>
+                            <!-- taxable -->
                             <div class="mb-3 row">
                                 <label for="" class="col-6 col-form-label">Your Annual Taxable Income (BDT)</label>
                                 <div class="col-6">
-                                    <input type="number" name="tax-input" class="form-control" id="tax-annual-taxable-income">
+                                    <input type="number" name="tax-input" class="form-control" id="tax-annual-taxable-income" value="60000000">
                                 </div>
                             </div>
+                            <!-- invest -->
+                            <div class="mb-3 row">
+                                <label for="" class="col-6 col-form-label">Your actual investment for tax rebate</label>
+                                <div class="col-6">
+                                    <input type="number" name="tax-input-actual-invest" class="form-control" id="tax-actual-invest" value="1000000">
+                                </div>
+                            </div>
+                            <!-- maximum -->
                             <div class="mb-3 row">
                                 <label for="" class="col-6 col-form-label">Your Maximum Allowable Investment for Tax Rebate
                                     (BDT)</label>
                                 <div class="col-6">
                                     <input type="number" readonly class="form-control readonly" id="tax-maximum-allowable-investment">
+                                </div>
+                            </div>
+                            <!-- applicable -->
+                            <div class="mb-3 row">
+                                <label for="" class="col-6 col-form-label">Your Applicable Allowable Investment for Tax Rebate
+                                    (BDT)</label>
+                                <div class="col-6">
+                                    <input type="number" readonly class="form-control readonly" id="tax-applicable-allowable-investment">
                                 </div>
                             </div>
                             <div class="  ">
@@ -65,55 +78,75 @@
                     <!-- tax output -->
                     <div id="tax-output" class="tax-output">
                         <form action="" id="tax-output-form">
-                            <div class="mb-3 row">
-                                <label for="staticEmail" class="col-6 col-form-label"></label>
-                                <label for="staticEmail" class="col-3 col-form-label "><strong> Ekush First Unit Fund </strong></label>
-                                <label for="staticEmail" class="col-3 col-form-label "><strong> DPS </strong></label>
+                            <div class="mb-3 row text-center">
+                                <label for="" class="col-6 col-form-label"></label>
+                                <label for="" class="col-4 col-form-label "><strong> Ekush Managed Fund </strong></label>
+                                <!-- <label for="" class="col-2 col-form-label "></label> -->
+                                <label for="" class="col-2 col-form-label "><strong> DPS </strong></label>
                             </div>
+                            <div class="mb-3 row text-center">
+                                <label for="" class="col-6 col-form-label"></label>
+                                <label for="" class="col-2 col-form-labe secondary-head"><strong> Maximum<br>Allowable Investment </strong></label>
+                                <label for="" class="col-2 col-form-labe secondary-head"><strong> Applicable<br>Allowable Investment </strong></label>
+                                <label for="" class="col-2 col-form-labe secondary-head"><strong> NBR approved only BDT 60,000<br>as Allowable Investment </strong></label>
+                            </div>
+                            <!-- Investment Amount -->
                             <div class="mb-3 row">
-                                <label for="staticEmail" class="col-6 col-form-label">Actual investment</label>
-                                <div class="col-3">
-                                    <input type="number" name="tax-input" readonly class="form-control" id="output-actual-invest-unit-fund" placeholder="">
+                                <label for="" class="col-6 col-form-label">Investment Amount</label>
+                                <div class="col-2">
+                                    <input type="number" name="tax-input" readonly class="form-control" id="output-invest-amount-1" placeholder="" value="0">
                                 </div>
-                                <div class="col-3">
-                                    <input type="number" name="tax-input" readonly class="form-control" id="output-actual-invest-dps" placeholder="">
+                                <div class="col-2">
+                                    <input type="number" name="tax-input" readonly class="form-control" id="output-invest-amount-2" placeholder="" value="0">
+                                </div>
+                                <div class="col-2">
+                                    <input type="number" name="tax-input" readonly class="form-control" id="output-invest-amount-3" placeholder="" value="60000">
                                 </div>
                             </div>
-                            <!--  -->
-                            <div class="mb-3 row">
-                                <label for="" class="col-6 col-form-label">Maximum Eligible Investment for Tax Rebate (BDT)</label>
-                                <div class="col-3">
-                                    <input type="text" name="tax-input" readonly class="form-control" id="output-maximum-investment-unit-fund" placeholder="">
-                                </div>
-                                <div class="col-3">
-                                    <input type="text" name="tax-input" readonly class="form-control" id="output-maximum-investment-dps" placeholder="" value="60000">
-                                </div>
-                            </div>
+                            <!-- You can save Tax Amounting to (BDT) -->
                             <div class="mb-3 row">
                                 <label for="" class="col-6 col-form-label">You can save Tax Amounting to (BDT)</label>
-                                <div class="col-3">
-                                    <input type="text" readonly class="form-control" id="output-save-tax-unit-fund" placeholder="">
+                                <div class="col-2">
+                                    <input type="text" readonly class="form-control" id="output-save-tax-amount-1" placeholder="">
                                 </div>
-                                <div class="col-3">
-                                    <input type="text" readonly class="form-control" id="output-save-tax-dps" placeholder="">
+                                <div class="col-2">
+                                    <input type="text" readonly class="form-control" id="output-save-tax-amount-2" placeholder="">
+                                </div>
+                                <div class="col-2">
+                                    <input type="text" readonly class="form-control" id="output-save-tax-amount-3" placeholder="">
                                 </div>
                             </div>
+                            <!-- Return through Tax Savings as % of Investment -->
                             <div class="mb-3 row">
-                                <label for="" class="col-6 col-form-label">Return through Tax Savings</label>
-                                <div class="col-3">
-                                    <input type="text" readonly class="form-control" id="output-return-tax-unit-fund" placeholder="">
+                                <label for="" class="col-6 col-form-label">Return through Tax Savings as % of Investment</label>
+                                <div class="col-2">
+                                    <input type="text" readonly class="form-control" id="output-tax-invest-1" placeholder="">
                                 </div>
-                                <div class="col-3">
-                                    <input type="text" readonly class="form-control" id="output-return-tax-dps" placeholder="">
+                                <div class="col-2">
+                                    <input type="text" readonly class="form-control" id="output-tax-invest-2" placeholder="">
+                                </div>
+                                <div class="col-2">
+                                    <input type="text" readonly class="form-control" id="output-tax-invest-3" placeholder="">
+                                </div>
+                            </div>
+                            <!-- Return through Tax Savings as % of Total Income -->
+                            <div class="mb-3 row">
+                                <label for="" class="col-6 col-form-label">Return through Tax Savings as % of Total Income</label>
+                                <div class="col-2">
+                                    <input type="text" name="tax-input" readonly class="form-control" id="output-tax-total-income-1" placeholder="">
+                                </div>
+                                <div class="col-2">
+                                    <input type="text" name="tax-input" readonly class="form-control" id="output-tax-total-income-2" placeholder="" value="">
+                                </div>
+                                <div class="col-2">
+                                    <input type="text" name="tax-input" readonly class="form-control" id="output-tax-total-income-3" placeholder="" value="">
                                 </div>
                             </div>
                         </form>
                        
                     </div>
                     <div class="text-center tax-summary">
-                        <p class="">
-                            Based on your Taxable Income and total income, If you Invest the Maximum Allowable Investment of BDT <span id="max-allowable-investment">300000</span> for tax rebate in Ekush First Unit Fund, <span id="ekus-unit-fund">45000</span> in taxes, implicitly earn <span id="implicitly-earn">5%</span> on your investment merely through tax savings.
-                        </p>
+                        
                     </div>
                 </div>
             </div>
